@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const userSchema = new mongoose.Schema({
     username:{type:String,unique:true},
-    password:String
+    email:String,
+    password:String,
+    role: { type: String, enum: ['user', 'admin'], default: 'user' } // Ajout du champ role avec les valeurs 'user' ou 'admin'
+
 })
 
 userSchema.pre('save', async function(next){

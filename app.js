@@ -1,6 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const authRoutes = require('./routes/auth');
 const authRoutes = require('./routes/authRoutes'); 
 
 const dotenv = require('dotenv');
@@ -20,16 +19,18 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Définir le répertoire des vues
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // Middleware pour traiter les données de formulaire
+app.set('views', path.join(__dirname, 'views'));
 
-// Définir les routes d'authentification
 app.use('/auth', authRoutes);
 
+const roomRoutes = require('./routes/roomRoutes');
+app.use('/api/rooms', roomRoutes);
 
 
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
 
-// Définir les variables d'environnement
+
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 5000;
 

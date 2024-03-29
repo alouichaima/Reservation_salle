@@ -10,5 +10,7 @@ router.get('/register', authController.showRegisterForm);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 router.get('/dashboard', authController.dashboard);
+router.get('/header', authController.showHeadersPage); // Utilisez /headers au lieu de /header
+
 
 module.exports = router;

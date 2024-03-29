@@ -1,0 +1,77 @@
+<!-- room.ejs -->
+<%- include('header') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des salles de réunion</title>
+    <link rel="stylesheet" href="/static/room.css"> <!-- Assurez-vous d'ajuster le chemin selon votre structure de fichiers -->
+</head>
+<body>
+    <!-- <div class="room-list">
+
+        <% rooms.forEach(room => { %>
+            <div class="room">
+                <h2><%= room.name %></h2>
+                <p>Étage: <%= room.floor %></p>
+                <p>Capacité: <%= room.capacity %></p>
+                <p>Équipements:</p>
+                <ul>
+                    <% if (room.assets.macLab) { %>
+                        <li>Mac Lab</li>
+                    <% } %>
+                    <% if (room.assets.pcLab) { %>
+                        <li>PC Lab</li>
+                    <% } %>
+                    <% if (room.assets.projector) { %>
+                        <li>Projector</li>
+                    <% } %>
+                    <% if (room.assets.tv) { %>
+                        <li>TV</li>
+                    <% } %>
+                    <% if (room.assets.whiteBoard) { %>
+                        <li>White Board</li>
+                    <% } %>
+                </ul>
+            </div>
+        <% }) %>
+    </div> -->
+    <section class="main">
+        <div class="main-top">
+          <h1>Liste des salles</h1>
+          <i class="fas fa-user-cog"></i>
+        </div>
+    <div class="users">
+        <% rooms.forEach(room => { %>
+            <div class="card">
+                <img src="<%= room.image %>">
+                <h4><%= room.name %></h4> <!-- Assuming 'name' is the name of the room -->
+                <p>Étage: <%= room.floor %></p>
+                <p>Capacité: <%= room.capacity %></p>
+                <p>Équipements:</p>
+                <ul>
+                    <% if (room.assets.macLab) { %>
+                        <li>Mac Lab</li>
+                    <% } %>
+                    <% if (room.assets.pcLab) { %>
+                        <li>PC Lab</li>
+                    <% } %>
+                    <% if (room.assets.projector) { %>
+                        <li>Projector</li>
+                    <% } %>
+                    <% if (room.assets.tv) { %>
+                        <li>TV</li>
+                    <% } %>
+                    <% if (room.assets.whiteBoard) { %>
+                        <li>White Board</li>
+                    <% } %>
+                </ul>
+                <button>Reserver</button>
+            </div>
+        <% }) %>
+    </div>
+    </section>
+</body>
+</html>

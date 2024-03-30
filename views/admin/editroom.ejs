@@ -1,0 +1,35 @@
+<!-- editroom.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Room</title>
+    <link rel="stylesheet" href="/static/dash.css" />
+    <link rel="stylesheet" href="/static/addroom.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+<body>
+    <h1>Edit Room</h1>
+    <% if (message) { %>
+        <p><%= message %></p>
+    <% } %>
+    <form action="/admin/rooms/<%= room._id %>" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= room.name %>" required><br>
+        <label for="floor">Floor:</label>
+        <input type="text" id="floor" name="floor" value="<%= room.floor %>" required><br>
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" value="<%= room.capacity %>" required><br>
+        <label>Assets:</label><br>
+        <% for (const key in room.assets) { %>
+            <% if (Object.prototype.hasOwnProperty.call(room.assets, key)) { %>
+                <input type="checkbox" id="<%= key %>" name="assets[<%= key %>]" <% if (room.assets[key]) { %> checked <% } %>>
+                <label for="<%= key %>"><%= key %></label><br>
+            <% } %>
+        <% } %>
+        <button type="submit">Update Room</button>
+    </form>
+</body>
+</html>

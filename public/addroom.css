@@ -1,0 +1,54 @@
+/* Styles spécifiques pour le formulaire de création de salle */
+.addroom-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-block: 68px;
+}
+.addroom-title {
+    color: #529ae7; /* Couleur bleue */
+    font-size: 24px; /* Taille de la police */
+    font-family: 'Poppins', sans-serif; /* Police de caractères */
+    font-weight: bold; /* Gras */
+    margin-bottom: 20px; /* Marge en bas */
+    align-items: center;
+
+}
+
+.addroom-form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.addroom-label {
+    font-weight: bold;
+    flex: 1;
+}
+
+.addroom-input[type="text"],
+.addroom-input[type="number"] {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.addroom-checkbox-label {
+    margin-right: 20px;
+}
+
+.addroom-button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addroom-button[type="submit"]:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Attendance Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="/static/dash.css" />
+    <link rel="stylesheet" href="/static/addroom.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+<body>
+    <div class="container mt-5">
+        <%- include('../nav') -%>
+        <h2 class="addroom-title">Create New Room</h2><hr>
+        <form class="addroom-container" action="/api/rooms/createrooms" method="POST" >
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="name">Name:</label>
+                <input type="text" class="addroom-input" id="name" name="name" required>
+            </div>
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="floor">Floor:</label>
+                <input type="text" class="addroom-input" id="floor" name="floor" required>
+            </div>
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="capacity">Capacity:</label>
+                <input type="number" class="addroom-input" id="capacity" name="capacity" required>
+            </div>
+            <div class="addroom-form-group">
+                <label for="assets">Assets:</label><br>
+                <input type="checkbox" id="macLab" name="assets[macLab]">
+                <label for="macLab" class="addroom-checkbox-label"> Mac Lab</label><br>
+                <input type="checkbox" id="pcLab" name="assets[pcLab]">
+                <label for="pcLab" class="addroom-checkbox-label"> PC Lab</label><br>
+                <input type="checkbox" id="projector" name="assets[projector]">
+                <label for="projector" class="addroom-checkbox-label"> Projector</label><br>
+                <input type="checkbox" id="tv" name="assets[tv]">
+                <label for="tv" class="addroom-checkbox-label"> TV</label><br>
+                <input type="checkbox" id="whiteBoard" name="assets[whiteBoard]">
+                <label for="whiteBoard" class="addroom-checkbox-label"> Whiteboard</label><br>
+            </div>
+            <button type="submit" class="addroom-button">Create Room</button>
+        </form>
+    </div>
+    
+</body>
+</html>

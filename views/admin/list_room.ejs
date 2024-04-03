@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="container">
-    <%- include('../nav') -%>
+    <% include('../nav') %>
 
     <section class="main">
       <div class="main-top">
@@ -20,7 +20,7 @@
         <% rooms.forEach(room => { %>
           <div class="card">
             <img src="<%= room.image %>">
-            <h4><%= room.name %></h4> <!-- Assuming 'name' is the name of the room -->
+            <h4><%= room.name %></h4> 
             <p>Étage: <%= room.floor %></p>
             <p>Capacité: <%= room.capacity %></p>
             <p>Équipements:</p>
@@ -41,7 +41,10 @@
                 <li>White Board</li>
               <% } %>
             </ul>
-            <button>Reserver</button>
+            <a href="/api/rooms/<%= room._id %>/edit"><button>Modifier</button></a>
+
+            <a href="/api/rooms/<%= room._id %>/delete"><button>Supprimer</button></a>
+            
           </div>
         <% }) %>
       </div>

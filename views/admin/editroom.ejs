@@ -1,35 +1,57 @@
 <!-- editroom.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Edit Room</title>
-    <link rel="stylesheet" href="/static/dash.css" />
-    <link rel="stylesheet" href="/static/addroom.css" />
-    <!-- Font Awesome Cdn Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <title>Edit Room</title>
+  <link rel="stylesheet" href="/static/dash.css">
 </head>
 <body>
-    <h1>Edit Room</h1>
-    <% if (message) { %>
-        <p><%= message %></p>
-    <% } %>
-    <form action="/admin/rooms/<%= room._id %>" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<%= room.name %>" required><br>
-        <label for="floor">Floor:</label>
-        <input type="text" id="floor" name="floor" value="<%= room.floor %>" required><br>
-        <label for="capacity">Capacity:</label>
-        <input type="number" id="capacity" name="capacity" value="<%= room.capacity %>" required><br>
-        <label>Assets:</label><br>
-        <% for (const key in room.assets) { %>
-            <% if (Object.prototype.hasOwnProperty.call(room.assets, key)) { %>
-                <input type="checkbox" id="<%= key %>" name="assets[<%= key %>]" <% if (room.assets[key]) { %> checked <% } %>>
-                <label for="<%= key %>"><%= key %></label><br>
-            <% } %>
-        <% } %>
-        <button type="submit">Update Room</button>
-    </form>
+  <div class="container">
+    <% include('../nav') %>
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Edit Room</h1>
+      </div>
+      <div class="room-details">
+        <form action="/api/rooms/<%= room._id %>/edit" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+        
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="name">Name:</label>
+                <input type="text" class="addroom-input" id="name" name="name" value="<%= room.name %>" required>
+            </div>
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="floor">Floor:</label>
+                <input type="text" class="addroom-input" id="floor" name="floor" value="<%= room.floor %>" required>
+            </div>
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="capacity">Capacity:</label>
+                <input type="number" class="addroom-input" id="capacity" name="capacity" value="<%= room.capacity %>" required>
+            </div>
+            <div class="addroom-form-group">
+                <label for="assets">Assets:</label><br>
+                <input type="checkbox" id="macLab" name="assets[macLab]" <% if (room.assets.macLab) { %>checked<% } %>>
+                <label for="macLab" class="addroom-checkbox-label"> Mac Lab</label><br>
+        
+                <input type="checkbox" id="pcLab" name="assets[pcLab]" <% if (room.assets.pcLab) { %>checked<% } %>>
+                <label for="pcLab" class="addroom-checkbox-label"> PC Lab</label><br>
+        
+                <input type="checkbox" id="projector" name="assets[projector]" <% if (room.assets.projector) { %>checked<% } %>>
+                <label for="projector" class="addroom-checkbox-label"> Projector</label><br>
+        
+                <input type="checkbox" id="tv" name="assets[tv]" <% if (room.assets.tv) { %>checked<% } %>>
+                <label for="tv" class="addroom-checkbox-label"> TV</label><br>
+        
+                <input type="checkbox" id="whiteBoard" name="assets[whiteBoard]" <% if (room.assets.whiteBoard) { %>checked<% } %>>
+                <label for="whiteBoard" class="addroom-checkbox-label"> White Board</label><br>
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+        
+      </div>
+    </section>
+  </div>
 </body>
 </html>

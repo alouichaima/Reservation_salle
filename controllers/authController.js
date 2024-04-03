@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const crypto = require('crypto'); // Add this line to import the crypto module
+const crypto = require('crypto'); 
 
 const authController = {
     async register(req, res) {
@@ -35,13 +35,10 @@ const authController = {
                 return res.status(401).send('Invalid password');
             } 
 
-            // Si l'authentification est réussie, générez le token
             const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
             
-            // Envoyez le token dans un cookie
-            res.cookie('sessionToken', token, { httpOnly: true }); // Assurez-vous que le nom du cookie est correct
+            res.cookie('sessionToken', token, { httpOnly: true }); 
     
-            // Redirigez l'utilisateur vers le tableau de bord approprié
             if (user.role === 'admin') {
                 return res.redirect(`/auth/dashboard`);
             } else {
@@ -72,16 +69,15 @@ const authController = {
     },
 
     showLoginForm(req, res) {
-        res.render('base'); // Assurez-vous d'avoir un fichier ejs nommé login dans le dossier des vues
+        res.render('base'); 
     },
     async showRegisterForm(req, res) {
-        const error = req.session.error; // Récupérer l'erreur de la session si elle existe
-        req.session.error = null; // Effacer l'erreur de la session après l'avoir récupérée
-        res.render('register', { error: error }); // Passer l'erreur à la vue register.ejs
+        const error = req.session.error; 
+        req.session.error = null;
+        res.render('register', { error: error });
     },
 
     showHeadersPage(req, res) {
-        // Récupérer l'utilisateur à partir de la session
         const user = req.session.user;
         res.render('header', { user: user }); 
 

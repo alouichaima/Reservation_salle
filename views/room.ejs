@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des salles de réunion</title>
-    <link rel="stylesheet" href="/static/room.css"> <!-- Assurez-vous d'ajuster le chemin selon votre structure de fichiers -->
+    <link rel="stylesheet" href="/static/room.css"> 
 </head>
 <body>
     <!-- <div class="room-list">
@@ -47,7 +47,7 @@
         <% rooms.forEach(room => { %>
             <div class="card">
                 <img src="<%= room.image %>">
-                <h4><%= room.name %></h4> <!-- Assuming 'name' is the name of the room -->
+                <h4><%= room.name %></h4> 
                 <p>Étage: <%= room.floor %></p>
                 <p>Capacité: <%= room.capacity %></p>
                 <p>Équipements:</p>

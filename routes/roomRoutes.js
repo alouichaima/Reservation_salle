@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const GridFsStorage = require('multer-gridfs-storage');
+
 const authenticate = require('../middleware/authenticate');
 const { createRoomController, allRoomsController, allRoomsAdminController, editRoomController,confirmDeleteRoomController,deleteRoomController
     ,updateRoomController} = require('../controllers/roomController');

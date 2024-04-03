@@ -70,25 +70,20 @@ const updateRoomController = async (req, res) => {
         const roomId = req.params.id;
         const { name, floor, capacity } = req.body;
         
-        // Créer un objet pour stocker les actifs mis à jour
         const updatedAssets = {};
 
-        // Vérifier si la case à cocher macLab est cochée
         updatedAssets.macLab = req.body.assets && req.body.assets.macLab === 'on';
          updatedAssets.pcLab = req.body.assets && req.body.assets.pcLab === 'on';
         updatedAssets.projector = req.body.assets && req.body.assets.projector === 'on';
          updatedAssets.tv = req.body.assets && req.body.assets.tv === 'on';
          updatedAssets.whiteBoard = req.body.assets && req.body.assets.whiteBoard === 'on';
 
-        // Mettre à jour la salle avec les nouvelles valeurs
         const updatedRoom = await Room.findByIdAndUpdate(roomId, { name, floor, capacity, assets: updatedAssets }, { new: true });
 
-        // Vérifier si la salle a été mise à jour avec succès
         if (!updatedRoom) {
             return res.status(404).render('error', { message: 'Room not found' });
         }
 
-        // Rediriger vers la liste des salles
         res.redirect('/api/rooms/get-all-admin-rooms');
     } catch (error) {
         console.error('Erreur lors de la mise à jour de la salle :', error);

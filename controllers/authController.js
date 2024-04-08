@@ -10,10 +10,35 @@ const authController = {
             if (!username || !email || !password) {
                 return res.status(400).send("Username, email, and password are required");
             }
+            const existingUser = await User.findOne({ email });
+            if (existingUser) {
+                return res.status(400).send("User with this email already exists");
+            }
             const user = new User({ username, email, password, role: 'user' });
             await user.save();
             // const token = res.headers.get('Authorization');
             // console.log('JWT Token:', token);  
+            res.redirect('/auth/login');
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+    },
+
+    async addAdmin(req, res) {
+        try {
+            const { username, email, password } = req.body;
+            if (!username || !email || !password) {
+                return res.status(400).send("Username, email, and password are required");
+            }
+
+            const existingUser = await User.findOne({ email });
+            if (existingUser) {
+                return res.status(400).send("User with this email already exists");
+            }
+
+            const user = new User({ username, email, password, role: 'admin' });
+            await user.save();
+
             res.redirect('/auth/login');
         } catch (error) {
             res.status(400).send(error.message);

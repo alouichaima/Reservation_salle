@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const GridFsStorage = require('multer-gridfs-storage');
 
 const authenticate = require('../middleware/authenticate');
 const { createRoomController, allRoomsController, allRoomsAdminController, editRoomController,confirmDeleteRoomController,deleteRoomController
     ,updateRoomController} = require('../controllers/roomController');
 const roomController = require('../controllers/roomController');
-router.post('/createrooms', authenticate, createRoomController);
+router.post('/createrooms' , authenticate, createRoomController);
 router.get('/createrooms',authenticate, roomController.getAllRooms);
 
 router.get('/get-all-rooms', authenticate, allRoomsController);

@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <title>Edit Room</title>
   <link rel="stylesheet" href="/static/dash.css">
-</head>
+  <link rel="stylesheet" href="/static/editroom.css" />
 <body>
   <div class="container">
-    <% include('../nav') %>
+    <%- include('../nav') -%>
 
-    <section class="main">
+    <section class="container mt-5">
       <div class="main-top">
         <h1>Edit Room</h1>
       </div>
@@ -18,15 +18,15 @@
             <input type="hidden" name="_method" value="PUT">
         
             <div class="addroom-form-group">
-                <label class="addroom-label" for="name">Name:</label>
+                <label class="editroom-label " for="name">Name:</label>
                 <input type="text" class="addroom-input" id="name" name="name" value="<%= room.name %>" required>
             </div>
             <div class="addroom-form-group">
-                <label class="addroom-label" for="floor">Floor:</label>
+                <label class="editroom-label " for="floor">Floor:</label>
                 <input type="text" class="addroom-input" id="floor" name="floor" value="<%= room.floor %>" required>
             </div>
             <div class="addroom-form-group">
-                <label class="addroom-label" for="capacity">Capacity:</label>
+                <label class="editroom-label " for="capacity">Capacity:</label>
                 <input type="number" class="addroom-input" id="capacity" name="capacity" value="<%= room.capacity %>" required>
             </div>
             <div class="addroom-form-group">
@@ -46,7 +46,7 @@
                 <input type="checkbox" id="whiteBoard" name="assets[whiteBoard]" <% if (room.assets.whiteBoard) { %>checked<% } %>>
                 <label for="whiteBoard" class="addroom-checkbox-label"> White Board</label><br>
             </div>
-            <button type="submit">Save Changes</button>
+            <button type="submit" class="editroom-button">Update Room</button> 
         </form>
         
       </div>

@@ -11,7 +11,7 @@ const roomSchema = new Schema({
         tv: { type: Boolean, default: false },
         whiteBoard: { type: Boolean, default: false }
     },
-    // image: String 
+    //  image: String 
 
 })
 const Room = (module.exports = mongoose.model('Room', roomSchema));

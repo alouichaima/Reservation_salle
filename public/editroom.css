@@ -1,0 +1,42 @@
+/* editroom.css */
+
+.editroom-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.editroom-container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.editroom-form-group {
+    margin-bottom: 20px;
+}
+
+.editroom-label {
+    display: block;
+    font-weight: bold;
+}
+
+.editroom-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.editroom-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.editroom-button:hover {
+    background-color: #45a049;
+}

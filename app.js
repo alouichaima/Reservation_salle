@@ -6,6 +6,7 @@ const roomRoutes = require('./routes/roomRoutes');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
+const reservationRoutes = require('./routes/reservationRoutes');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
+app.use('/reservations', reservationRoutes);
 
 
 // Autres middlewares et configurations...

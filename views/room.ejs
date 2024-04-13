@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des salles de réunion</title>
     <link rel="stylesheet" href="/static/room.css"> 
+    <script src="https://fullcalendar.io/docs/Calendar-render"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- <div class="room-list">
@@ -81,9 +83,13 @@
                   
                   
                 <button class="reserveButton" data-room-id="<%= room._id %>">Réserver</button> <!-- Bouton pour afficher le formulaire -->
+                <button id="showCalendarButton">Afficher le calendrier</button>
+
             </div>
         <% }) %>
     </div>
+    <div id="calendar"></div>
+
     </section>
 
     <script>
@@ -95,6 +101,19 @@
                 const form = document.getElementById('reservationForm-' + roomId);
                 form.style.display = 'block';
             });
+        });
+        
+
+
+    </script>
+    <script>
+        // Récupérer le bouton "Afficher le calendrier"
+        const showCalendarButton = document.getElementById('showCalendarButton');
+    
+        // Ajouter un écouteur d'événements au clic sur le bouton
+        showCalendarButton.addEventListener('click', () => {
+            // Rediriger l'utilisateur vers la page calendrier
+            window.location.href = '/calendar';
         });
     </script>
 </body>

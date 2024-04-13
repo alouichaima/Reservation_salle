@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/assets/fullcalendar/core/main.css">
+    <link rel="stylesheet" href="/assets/fullcalendar/daygrid/main.css">
+    <link rel="stylesheet" href="/assets/fullcalendar/timegrid/main.css">
+    <link rel="stylesheet" href="/assets/fullcalendar/list/main.css">
+
+    <link rel="stylesheet" href="/assets/calendar.css">
+</head>
+<body>
+    <div id="calendrier"></div>
+
+    <script src="/assets/fullcalendar/core/main.js"></script>
+    <script src="/assets/fullcalendar/daygrid/main.js"></script>
+    <script src="/assets/fullcalendar/timegrid/main.js"></script>
+    <script src="/assets/fullcalendar/list/main.js"></script>
+
+    <script>
+        
+       window.onload = () => {
+    let elementCalendrier = document.getElementById("calendrier");
+    let xmlhttp = new XMLHttpRequest(); 
+
+    // Requête AJAX pour récupérer les réservations existantes depuis le backend
+    xmlhttp.onreadystatechange = () => {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            let evenements = JSON.parse(xmlhttp.responseText);
+            let calendrier = new FullCalendar.Calendar(elementCalendrier, {
+                plugins: ['dayGrid', 'timeGrid', 'list'],
+                defaultView: 'timeGridWeek',
+                locale: 'fr',
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,list'
+                },
+                buttonText: {
+                    today: 'Aujourd\'hui',
+                    month: 'Mois',
+                    week: 'Semaine',
+                    list: 'Liste'
+                },
+                events: evenements, 
+                nowIndicator: true
+            });
+            calendrier.render();
+        }
+    };
+    xmlhttp.open('get', '/reservations', true); 
+    xmlhttp.send(null);
+};
+
+            
+    </script>
+</body>
+</html>

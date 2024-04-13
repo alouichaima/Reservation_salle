@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const reservationRoutes = require('./routes/reservationRoutes');
+const calendarRouter = require('./routes/calendarRoutes');
 
 const app = express();
 
@@ -23,6 +24,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
+app.use('/fullcalendar', express.static(path.join(__dirname, 'public/assets/fullcalendar')));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -30,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/reservations', reservationRoutes);
-
+app.use('/calendar', calendarRouter);
 
 // Autres middlewares et configurations...
 

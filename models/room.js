@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const roomSchema = new Schema({
     name: { type: String, index: true, required: true },
     floor: { type: String, required: true },
+    
     capacity: Number,
     assets: {
         macLab: { type: Boolean, default: false },

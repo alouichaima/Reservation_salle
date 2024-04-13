@@ -36,3 +36,24 @@ exports.reserveMeetingRoom = async (req, res) => {
     res.status(500).json({ message: 'Erreur lors de la réservation.' });
   }
 };
+exports.getAllReservations = async (req, res) => {
+  try {
+    // Récupérer toutes les réservations depuis la base de données
+    const reservations = await Reservation.find();
+
+    // Formater les données pour qu'elles soient compatibles avec FullCalendar
+    const formattedReservations = reservations.map(reservation => {
+      return {
+        title: `Réservé `,
+        start: reservation.startTime,
+        end: reservation.endTime,
+        id: reservation._id
+      };
+    });
+
+    res.status(200).json(formattedReservations);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des réservations :', error);
+    res.status(500).json({ message: 'Erreur lors de la récupération des réservations.' });
+  }
+};

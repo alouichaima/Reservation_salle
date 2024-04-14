@@ -32,7 +32,7 @@ const updateReservationController = async (req, res) => {
             return res.status(404).render('error', { message: 'Reservation not found' });
         }
 
-        res.redirect('listeReservation');
+        res.redirect('getreservations/get-all-reservation');
     } catch (error) {
         console.error('Erreur lors de la mise à jour de la salle :', error);
         res.status(500).render('error', { message: 'Erreur interne du serveur' });

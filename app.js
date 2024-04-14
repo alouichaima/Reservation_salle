@@ -9,6 +9,9 @@ const path = require('path');
 const reservationRoutes = require('./routes/reservationRoutes');
 const getreservationRoutes = require('./routes/getreservationRoutes'); 
 const editreservationRoutes = require('./routes/editreservationRoutes'); 
+const deletereservationRoutes = require('./routes/deletereservationRoutes'); 
+
+
 
 
 const app = express();
@@ -35,7 +38,7 @@ app.use('/api/rooms', roomRoutes);
 app.use('/reservations', reservationRoutes);
 app.use('/getreservations', getreservationRoutes);
 app.use('/editreservations', editreservationRoutes);
-
+app.use('/deletereservation',deletereservationRoutes);
 
 // Autres middlewares et configurations...
 

@@ -20,7 +20,7 @@
                 <p>startTime: <%= reservation.startTime %></p>
                 <p>endTime: <%= reservation.endTime %></p>
                 <a href="/editreservations/<%= reservation._id %>/edit"><button>Modifier</button></a>
-                <button type="submit">Annuler</button>
+                <a href="/deletereservation/<%= reservation._id %>/delete"><button>Annuler</button></a>
             </div>
         <% }) %>                  
     </div>

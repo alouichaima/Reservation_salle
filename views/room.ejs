@@ -83,7 +83,7 @@
                   
                   
                 <button class="reserveButton" data-room-id="<%= room._id %>">Réserver</button> <!-- Bouton pour afficher le formulaire -->
-                <button id="showCalendarButton">Afficher le calendrier</button>
+                <button class="showCalendarButton" data-room-id="<%= room._id %>">Afficher le calendrier</button>
 
             </div>
         <% }) %>
@@ -107,14 +107,18 @@
 
     </script>
     <script>
-        // Récupérer le bouton "Afficher le calendrier"
-        const showCalendarButton = document.getElementById('showCalendarButton');
-    
-        // Ajouter un écouteur d'événements au clic sur le bouton
-        showCalendarButton.addEventListener('click', () => {
-            // Rediriger l'utilisateur vers la page calendrier
-            window.location.href = '/calendar';
-        });
+       // Récupérer tous les boutons "Afficher le calendrier"
+const showCalendarButtons = document.querySelectorAll('.showCalendarButton');
+showCalendarButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const roomId = button.getAttribute('data-room-id');
+        // Stocker l'ID de la salle dans le stockage local
+        localStorage.setItem('selectedRoomId', roomId);
+        // Rediriger l'utilisateur vers la page calendrier
+        window.location.href = '/calendar';
+    });
+});
+
     </script>
 </body>
 </html>

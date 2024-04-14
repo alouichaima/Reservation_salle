@@ -20,38 +20,42 @@
     <script src="/assets/fullcalendar/list/main.js"></script>
 
     <script>
-        
-       window.onload = () => {
+     window.onload = () => {
     let elementCalendrier = document.getElementById("calendrier");
-    let xmlhttp = new XMLHttpRequest(); 
+    let selectedRoomId = localStorage.getItem('selectedRoomId');
+    if (selectedRoomId) {
+        let xmlhttp = new XMLHttpRequest(); 
 
-    // Requête AJAX pour récupérer les réservations existantes depuis le backend
-    xmlhttp.onreadystatechange = () => {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            let evenements = JSON.parse(xmlhttp.responseText);
-            let calendrier = new FullCalendar.Calendar(elementCalendrier, {
-                plugins: ['dayGrid', 'timeGrid', 'list'],
-                defaultView: 'timeGridWeek',
-                locale: 'fr',
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,list'
-                },
-                buttonText: {
-                    today: 'Aujourd\'hui',
-                    month: 'Mois',
-                    week: 'Semaine',
-                    list: 'Liste'
-                },
-                events: evenements, 
-                nowIndicator: true
-            });
-            calendrier.render();
-        }
-    };
-    xmlhttp.open('get', '/reservations', true); 
-    xmlhttp.send(null);
+        // Requête AJAX pour récupérer les réservations existantes depuis le backend
+        xmlhttp.onreadystatechange = () => {
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                let evenements = JSON.parse(xmlhttp.responseText);
+                let calendrier = new FullCalendar.Calendar(elementCalendrier, {
+                    plugins: ['dayGrid', 'timeGrid', 'list'],
+                    defaultView: 'timeGridWeek',
+                    locale: 'fr',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,list'
+                    },
+                    buttonText: {
+                        today: 'Aujourd\'hui',
+                        month: 'Mois',
+                        week: 'Semaine',
+                        list: 'Liste'
+                    },
+                    events: evenements, 
+                    nowIndicator: true
+                });
+                calendrier.render();
+            }
+        };
+        xmlhttp.open('get', '/reservations', true); 
+        xmlhttp.send(null);
+    } else {
+        // Gérer le cas où aucun ID de salle n'est sélectionné
+    }
 };
 
             

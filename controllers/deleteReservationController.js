@@ -25,7 +25,7 @@ const deleteReservationController = async (req, res) => {
             return res.status(404).render('error', { message: 'reservation not found' });
         }
 
-        res.redirect('getreservations/get-all-reservation');
+        res.redirect('/getreservations/get-all-reservation');
     } catch (error) {
         res.render('error', { message: error.message });
     }

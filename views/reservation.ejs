@@ -1,0 +1,16 @@
+<!-- success.ejs -->
+<%- include('header') -%>
+<link rel="stylesheet" href="/static/reservation.css">
+
+
+<div class="reservation">
+    <h1>Réservation réussie !</h1>
+    <p>Votre réservation a été enregistrée avec succès.</p>
+    <p>Voici les détails de la réservation :</p>
+    <ul>
+        <li>Heure de début : <%= reservation.startTime %></li>
+        <li>Heure de fin : <%= reservation.endTime %></li>
+    </ul>
+</div>
+
+<%- include('footer') -%>

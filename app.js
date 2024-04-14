@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const reservationRoutes = require('./routes/reservationRoutes');
+const getreservationRoutes = require('./routes/getreservationRoutes'); 
+const editreservationRoutes = require('./routes/editreservationRoutes'); 
+
 
 const app = express();
 
@@ -30,6 +33,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/reservations', reservationRoutes);
+app.use('/getreservations', getreservationRoutes);
+app.use('/editreservations', editreservationRoutes);
 
 
 // Autres middlewares et configurations...

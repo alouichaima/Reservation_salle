@@ -35,4 +35,13 @@ exports.reserveMeetingRoom = async (req, res) => {
     console.error('Erreur lors de la réservation :', err);
     res.status(500).json({ message: 'Erreur lors de la réservation.' });
   }
+
 };
+
+
+
+
+
+
+
+

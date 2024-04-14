@@ -3,7 +3,7 @@
 
 body{
     font-family: 'Open Sans', sans-serif;
-    background-image: url('/assets/background_png.png');
+    background-image: url('img.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }

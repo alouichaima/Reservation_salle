@@ -8,36 +8,30 @@ exports.reserveMeetingRoom = async (req, res) => {
 
   try {
     // Vérifier si la salle de réunion est disponible pour la plage horaire spécifiée
-    const conflictingReservations = await Reservation.find({
-      meetingRoom: meetingRoomId,
-      $or: [
-        { startTime: { $lt: endTimeUTC }, endTime: { $gt: startTimeUTC } }, // Vérification de chevauchement
-        { startTime: { $gte: startTimeUTC, $lte: endTimeUTC } }, // Vérification d'inclusion
-      ],
-    });
+    const conflictingReservation = await Reservation.findOne({
+  $or: [
+    { meetingRoom: meetingRoomId, startTime: { $lt: endTimeUTC }, endTime: { $gt: startTimeUTC } }, // Vérification de chevauchement pour la salle spécifique
+    { meetingRoom: { $ne: meetingRoomId }, startTime: { $lt: endTimeUTC, $gte: startTimeUTC }, endTime: { $gt: startTimeUTC, $lte: endTimeUTC } }, // Vérification d'inclusion pour d'autres salles
+  ],
+});
 
-    // Filtrer les réservations conflictuelles ayant un ID de salle de réunion différent
-    const conflictingReservationsWithDifferentRoomId = conflictingReservations.filter(reservation => reservation.meetingRoom && reservation.meetingRoom.toString() !== meetingRoomId);
-
-
-    if (conflictingReservationsWithDifferentRoomId.length > 0) {
+    
+    if (conflictingReservation) {
       return res.status(400).json({ message: 'Conflit de réservation. La salle de réunion est déjà réservée pour cette plage horaire.' });
     }
-
-    // Créer la nouvelle réservation
+    
+    // Aucun conflit trouvé, enregistrez la nouvelle réservation
     const newReservation = new Reservation({
       user: userId,
-      meetingRoom: meetingRoomId,
+      meetingRoom: meetingRoomId, // Utilisation de l'ID de la salle
       startTime: startTimeUTC,
       endTime: endTimeUTC,
     });
-
-    // Sauvegarder la nouvelle réservation dans la base de données
+    
     await newReservation.save();
-
-    res.status(201).json({ message: 'Réservation réussie !', reservation: newReservation });
-  } catch (err) {
-    console.error('Erreur lors de la réservation :', err);
+    res.render('reservation', { reservation: newReservation });
+  } catch (error) {
+    console.error('Erreur lors de la réservation :', error);
     res.status(500).json({ message: 'Erreur lors de la réservation.' });
   }
 };

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmer la suppression d'une reservation</title>
+  <link rel="stylesheet" href="/static/dash.css">
+</head>
+<body>
+  <div class="container">
+    <% include('header') %>
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Confirmer la suppression</h1>
+      </div>
+      <div class="room-details">
+        <p>Voulez-vous vraiment supprimer la réservation du <%= reservation.dateTime %> ?</p>
+        <form action="/deletereservation/<%= reservation._id %>/delete" method="POST">
+            <button type="submit">Supprimer</button>
+        </form>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

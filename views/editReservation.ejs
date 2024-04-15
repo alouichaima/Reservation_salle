@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Reservation</title>
+  <link rel="stylesheet" href="/static/dash.css">
+  <link rel="stylesheet" href="/static/editroom.css" />
+<body>
+  <div class="container">
+    <%- include('header') -%>
+
+    <section class="container mt-5">
+      <div class="main-top">
+        <h1>Edit Reservation</h1>
+      </div>
+      <div class="room-details">
+        <form action="/editreservations/<%= reservation._id %>/edit" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+        
+            <div class="addroom-form-group">
+                <label class="editroom-label " for="startTime">startTime:</label>
+                <input type="date" class="addroom-input" id="startTime" name="startTime" value="<%= reservation.startTime %>" required>
+            </div>
+            <div class="addroom-form-group">
+                <label class="editroom-label " for="endTime">endTime:</label>
+                <input type="date" class="addroom-input" id="endTime" name="endTime" value="<%= reservation.endTime %>" required>
+            </div>
+           
+           
+            <button type="submit" class="editroom-button">Update Reservation</button> 
+        </form>
+        
+      </div>
+    </section>
+  </div>
+</body>
+</html>

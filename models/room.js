@@ -12,6 +12,7 @@ const roomSchema = new Schema({
         tv: { type: Boolean, default: false },
         whiteBoard: { type: Boolean, default: false }
     },
+
     //  image: String 
 
 })

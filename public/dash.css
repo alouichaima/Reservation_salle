@@ -22,6 +22,7 @@ nav{
   background: #fff;
   overflow: hidden;
   transition: 1s;
+  background-color: bisque;
 }
 nav:hover{
   width: 280px;
@@ -32,12 +33,14 @@ nav:hover{
   display: flex;
   margin: 10px 0 0 10px;
   padding-bottom: 3rem;
+  
 }
 
 .logo img{
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  
 }
 .logo span{
   font-weight: bold;
@@ -80,6 +83,7 @@ a:hover i{
 
 .container{
   display: flex;
+  background-color: antiquewhite;
 }
 
 /* MAin Section */
@@ -87,6 +91,10 @@ a:hover i{
   position: relative;
   padding: 20px;
   width: 100%;
+  background-image: url('img.jpg');
+  background-size: cover;
+    background-position: center;
+
 }
 .main-top{
   display: flex;

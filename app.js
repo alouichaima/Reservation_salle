@@ -7,11 +7,14 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const reservationRoutes = require('./routes/reservationRoutes');
+
 const getreservationRoutes = require('./routes/getreservationRoutes'); 
 const editreservationRoutes = require('./routes/editreservationRoutes'); 
 const deletereservationRoutes = require('./routes/deletereservationRoutes'); 
 
 
+
+const calendarRouter = require('./routes/calendarRoutes');
 
 
 const app = express();
@@ -29,6 +32,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
+app.use('/fullcalendar', express.static(path.join(__dirname, 'public/assets/fullcalendar')));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,6 +44,9 @@ app.use('/reservations', reservationRoutes);
 app.use('/getreservations', getreservationRoutes);
 app.use('/editreservations', editreservationRoutes);
 app.use('/deletereservation',deletereservationRoutes);
+
+app.use('/calendar', calendarRouter);
+
 
 // Autres middlewares et configurations...
 

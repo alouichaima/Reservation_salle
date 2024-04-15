@@ -1,0 +1,30 @@
+<%- include('header') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des réservations</title>
+    <link rel="stylesheet" href="/static/room.css"> 
+</head>
+<body>
+    <section class="main">
+        <div class="main-top">
+          <h1>Liste des réservations</h1>
+          <i class="fas fa-user-cog"></i>
+        </div>
+    <div class="users">
+        <% reservations.forEach(reservation => { %>
+            <div class="card">
+                <p>startTime: <%= reservation.startTime %></p>
+                <p>endTime: <%= reservation.endTime %></p>
+                <a href="/editreservations/<%= reservation._id %>/edit"><button>Modifier</button></a>
+                <a href="/deletereservation/<%= reservation._id %>/delete"><button>Annuler</button></a>
+            </div>
+        <% }) %>                  
+    </div>
+    </section>
+</body>
+</html>
+

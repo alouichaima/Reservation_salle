@@ -1,42 +1,60 @@
-/* editroom.css */
+.room-details {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 68px;
+    background-image: url('img.jpg');
 
-.editroom-title {
+  }
+  
+  .room-details h1 {
+    color: #529ae7;
     font-size: 24px;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
-}
-
-.editroom-container {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.editroom-form-group {
     margin-bottom: 20px;
-}
-
-.editroom-label {
-    display: block;
+    align-items: center;
+    background-color: antiquewhite;
+  }
+  
+  .addroom-form-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .editroom-label {
     font-weight: bold;
-}
-
-.editroom-input {
-    width: 100%;
-    padding: 8px;
+    flex: 1;
+  }
+  
+  .addroom-input[type="text"],
+  .addroom-input[type="number"] {
+    flex: 2;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.editroom-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
+    border-radius: 5px;
+    outline: none;
+    background-color: antiquewhite;
+  }
+  
+  .addroom-checkbox-label {
+    margin-right: 20px;
+  }
+  
+  .editroom-button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #131010;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    width: 100%;
-}
-
-.editroom-button:hover {
-    background-color: #45a049;
-}
+    background-color: antiquewhite;
+  }
+  
+  .editroom-button[type="submit"]:hover {
+    background-color: #848e99;
+    background-color: antiquewhite;
+  }
+  

@@ -9,6 +9,8 @@ router.post('/add-admin', authController.addAdmin);
 
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
+router.get('/getUsers', authController.getUsers);
+
 router.get('/dashboard', authController.dashboard);
 router.get('/header', authController.showHeadersPage); 
 

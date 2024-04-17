@@ -2,7 +2,6 @@
 <%- include('header') -%>
 <link rel="stylesheet" href="/static/reservation.css">
 
-
 <div class="reservation">
     <h1>Réservation réussie !</h1>
     <p>Votre réservation a été enregistrée avec succès.</p>
@@ -10,6 +9,11 @@
     <ul>
         <li>Heure de début : <%= reservation.startTime %></li>
         <li>Heure de fin : <%= reservation.endTime %></li>
+        <% if (room && room.name) { %>
+            <li>Room : <%= room.name %></li>
+        <% } else { %>
+            <li>Room : Non spécifiée</li>
+        <% } %>
     </ul>
 </div>
 

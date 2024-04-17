@@ -76,7 +76,9 @@
                   
                     <label for="endTime">Date de fin :</label>
                     <input type="datetime-local" id="endTime" name="endTime" required>
-                  
+                    <input type="hidden" name="roomId" value="<%= room._id %>">
+
+
                     <button type="submit">Confirmer</button>
                   </form>
                   
@@ -93,19 +95,23 @@
     </section>
 
     <script>
-        // JavaScript pour afficher le formulaire de réservation lorsque le bouton "Réserver" est cliqué
-        const reserveButtons = document.querySelectorAll('.reserveButton');
-        reserveButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const roomId = button.getAttribute('data-room-id');
-                const form = document.getElementById('reservationForm-' + roomId);
-                form.style.display = 'block';
-            });
-        });
-        
+       // JavaScript pour afficher le formulaire de réservation lorsque le bouton "Réserver" est cliqué
+const reserveButtons = document.querySelectorAll('.reserveButton');
+reserveButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const roomId = button.getAttribute('data-room-id');
+        const form = document.getElementById('reservationForm-' + roomId);
+        form.style.display = 'block';
+    });
+});
 
-
-    </script>
+// Ajoutez ce code pour vérifier la soumission du formulaire
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', (event) => {
+        console.log('Formulaire soumis');
+    });
+});
+</script>
     <script>
        // Récupérer tous les boutons "Afficher le calendrier"
 const showCalendarButtons = document.querySelectorAll('.showCalendarButton');

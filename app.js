@@ -26,7 +26,8 @@ app.use(session({
     saveUninitialized: false
 }));
 app.use(cookieParser());
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 dotenv.config();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -35,8 +36,7 @@ app.use('/assets', express.static(path.join(__dirname, 'public/assets')))
 app.use('/fullcalendar', express.static(path.join(__dirname, 'public/assets/fullcalendar')));
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 
 app.use('/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);

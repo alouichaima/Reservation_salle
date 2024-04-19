@@ -2,3 +2,8 @@
     width: 80%;
     margin: auto;
 }
+.calendar-container {
+    background-color: #ffffff; /* Arrière-plan blanc */
+    padding: 20px; /* Ajoutez un peu de marge intérieure pour l'esthétique */
+}
+

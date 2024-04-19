@@ -48,8 +48,9 @@
     <div class="users">
         <% rooms.forEach(room => { %>
             <div class="card">
-                <img src="<%= room.image %>">
-                <h4><%= room.name %></h4> 
+                <% if (room.image) { %>
+                    <img src="/<%= room.image %>">
+                    <% } %>                    <h4><%= room.name %></h4> 
                 <p>Étage: <%= room.floor %></p>
                 <p>Capacité: <%= room.capacity %></p>
                 <p>Équipements:</p>

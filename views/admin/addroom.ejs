@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Attendance Dashboard | By Code Info</title>
+    <title>Ajouter salles</title>
     <link rel="stylesheet" href="/static/dash.css" />
     <link rel="stylesheet" href="/static/addroom.css" />
-    <!-- Font Awesome Cdn Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
     <div class="container mt-5">
         <%- include('../nav') -%>
-        <h2 class="addroom-title">Create Room</h2><hr>
-        <form class="addroom-container" action="/api/rooms/createrooms" method="POST" >
+        <form class="addroom-container" action="/api/rooms/createrooms" method="POST" enctype="multipart/form-data" >
+            <h2  class="addroom-title">Ajouter Salle</h2><hr>
+
             <div class="addroom-form-group">
                 <label class="addroom-label" for="name">Name:</label>
                 <input type="text" class="addroom-input" id="name" name="name" required>
@@ -38,7 +38,11 @@
                 <input type="checkbox" id="whiteBoard" name="assets[whiteBoard]">
                 <label for="whiteBoard" class="addroom-checkbox-label"> Whiteboard</label><br>
             </div>
-            <button type="submit" class="addroom-button">Create Room</button>
+            <div class="addroom-form-group">
+                <label class="addroom-label" for="image">Image:</label>
+                <input type="file" class="addroom-input" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="addroom-button">Ajouter</button>
         </form>
     </div>
     

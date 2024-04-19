@@ -13,7 +13,6 @@ const roomSchema = new Schema({
         whiteBoard: { type: Boolean, default: false }
     },
 
-    //  image: String 
-
+    image: String
 })
 const Room = (module.exports = mongoose.model('Room', roomSchema));

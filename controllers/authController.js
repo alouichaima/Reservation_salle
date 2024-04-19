@@ -89,17 +89,28 @@ const authController = {
     },
     async getUsers(req, res) {
         try {
-            // Utiliser la méthode find du modèle User pour récupérer uniquement les utilisateurs ayant le rôle "user"
             const users = await User.find({ role: 'user' });
-            // Rendre la vue users.ejs en utilisant les données récupérées
             res.render('admin/users', { users: users });
         } catch (error) {
-            // En cas d'erreur, envoyer un code d'erreur 500 et un message d'erreur
             res.status(500).send(error.message);
         }
     },
+
+    async welcome(req, res) {
+        try {
+            const user = req.user;
+
+            const username = user ? user.username : "Utilisateur";
+
+            res.render('home', { username });
+        } catch (error) {
+            console.error('Erreur lors du rendu de la page de bienvenue :', error);
+            res.status(500).render('error', { message: 'Erreur interne du serveur' });
+        }
+    },
+
     
-    
+      
     
     dashboard(req, res) {
         const user = req.session.user;

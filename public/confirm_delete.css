@@ -1,40 +1,47 @@
-.confirm-container {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  .confirm-header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px 5px 0 0;
-  }
-  
-  .confirm-header h1 {
-    margin: 0;
-  }
-  
-  .confirm-details {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .confirm-details p {
-    margin-bottom: 20px;
-  }
-  
-  .confirm-button {
-    padding: 10px 20px;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .confirm-button:hover {
-    background-color: #c82333;
-  }
-  
+/* Style du formulaire de confirmation de suppression */
+.confirmation-form {
+  margin-top: 20px;
+}
+
+.confirmation-form p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.confirmation-form button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirmation-form button:hover {
+  background-color: #d32f2f;
+}
+
+
+
+.main {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le titre */
+.main h1 {
+  color: #333;
+}
+
+/* Style pour les détails de la salle */
+.room-details {
+  margin-top: 20px;
+}
+
+/* Style pour les paragraphes */
+.room-details p {
+  font-size: 16px;
+  color: #555;
+}

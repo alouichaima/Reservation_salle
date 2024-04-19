@@ -9,12 +9,14 @@
   <div class="container">
     <%- include('../nav') -%>
 
-    <section class="container mt-5">
+    <section >
       <div class="main-top">
-        <h1>Edit Room</h1>
       </div>
       <div class="room-details">
-        <form action="/api/rooms/<%= room._id %>/edit" method="POST">
+        <form action="/api/rooms/<%= room._id %>/edit" method="POST" enctype="multipart/form-data">
+            
+          <h1 class="editroom-title">Modifier salle</h1>
+
             <input type="hidden" name="_method" value="PUT">
         
             <div class="addroom-form-group">
@@ -46,7 +48,13 @@
                 <input type="checkbox" id="whiteBoard" name="assets[whiteBoard]" <% if (room.assets.whiteBoard) { %>checked<% } %>>
                 <label for="whiteBoard" class="addroom-checkbox-label"> White Board</label><br>
             </div>
-            <button type="submit" class="editroom-button">Update Room</button> 
+            <div >
+              <label class="editroom-label" for="photo">Photo:</label>
+              <input type="file" id="photo" name="image">
+          </div>
+          
+          
+            <button type="submit" class="editroom-button">Modifier</button> 
         </form>
         
       </div>

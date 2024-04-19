@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Confirmer la suppression d'une reservation</title>
-  <link rel="stylesheet" href="/static/dash.css">
+  <title>Confirmer l'annulation</title>
 </head>
 <body>
-  <div class="container">
-    <% include('header') %>
+  <div >
+    <%- include('header') -%>
 
-    <section class="main">
-      <div class="main-top">
-        <h1>Confirmer la suppression</h1>
+    <section >
+      <div >
+        <h1>Confirmer l'annulation</h1>
       </div>
-      <div class="room-details">
-        <p>Voulez-vous vraiment supprimer la réservation du <%= reservation.dateTime %> ?</p>
+      <div >
+        <p>Voulez-vous vraiment annuler la réservation du <%= reservation.dateTime %> ?</p>
         <form action="/deletereservation/<%= reservation._id %>/delete" method="POST">
-            <button type="submit">Supprimer</button>
+            <button type="submit">Annuler</button>
         </form>
       </div>
     </section>

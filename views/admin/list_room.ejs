@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Salles</title>
   <link rel="stylesheet" href="/static/dash.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
   <div class="container">
@@ -12,14 +11,16 @@
 
     <section class="main">
       <div class="main-top">
-        <h1>Attendance</h1>
+        <h1 style="color: bisque; margin-left: 600px; margin-top: 18px;">Liste des Salles</h1>
         <i class="fas fa-user-cog"></i>
       </div>
       <div class="users">
         <% rooms.forEach(room => { %>
           <div class="card">
-            <img src="<%= room.image %>">
-            <h4><%= room.name %></h4> 
+            <% if (room.image) { %>
+              <img src="/<%= room.image %>">
+              <% } %>            
+              <h4><%= room.name %></h4> 
             <p>Étage: <%= room.floor %></p>
             <p>Capacité: <%= room.capacity %></p>
             <p>Équipements:</p>

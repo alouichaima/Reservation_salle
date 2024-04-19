@@ -11,15 +11,15 @@ const createRoomController = async (req, res) => {
             }
         }
 
-        const room = new Room({ name, floor, capacity, assets: assetData, author: req.userId });
+        const image = req.file ? req.file.path : null; 
+
+        const room = new Room({ name, floor, capacity, assets: assetData, image, author: req.userId });
         await room.save();
-        res.render('admin/addroom', { message: 'Room created successfully' });
+        res.redirect('/api/rooms/get-all-admin-rooms'); 
     } catch (error) {
-        res.render('error', { message: error.message }); 
+        res.render('error', { message: error.message });
     }
 }
-
-
 
 const allRoomsController = async (req, res) => {
     try {
@@ -70,15 +70,24 @@ const updateRoomController = async (req, res) => {
         const roomId = req.params.id;
         const { name, floor, capacity } = req.body;
         
-        const updatedAssets = {};
+        const updatedAssets = {
+            macLab: req.body.assets && req.body.assets.macLab === 'on',
+            pcLab: req.body.assets && req.body.assets.pcLab === 'on',
+            projector: req.body.assets && req.body.assets.projector === 'on',
+            tv: req.body.assets && req.body.assets.tv === 'on',
+            whiteBoard: req.body.assets && req.body.assets.whiteBoard === 'on'
+        };
 
-        updatedAssets.macLab = req.body.assets && req.body.assets.macLab === 'on';
-         updatedAssets.pcLab = req.body.assets && req.body.assets.pcLab === 'on';
-        updatedAssets.projector = req.body.assets && req.body.assets.projector === 'on';
-         updatedAssets.tv = req.body.assets && req.body.assets.tv === 'on';
-         updatedAssets.whiteBoard = req.body.assets && req.body.assets.whiteBoard === 'on';
+        let photoUrl = ''; 
 
-        const updatedRoom = await Room.findByIdAndUpdate(roomId, { name, floor, capacity, assets: updatedAssets }, { new: true });
+        if (req.file) {
+            photoUrl = req.file.path; 
+        } else {
+            const existingRoom = await Room.findById(roomId);
+            photoUrl = existingRoom.image;
+        }
+
+        const updatedRoom = await Room.findByIdAndUpdate(roomId, { name, floor, capacity, assets: updatedAssets, image: photoUrl }, { new: true });
 
         if (!updatedRoom) {
             return res.status(404).render('error', { message: 'Room not found' });
@@ -90,6 +99,8 @@ const updateRoomController = async (req, res) => {
         res.status(500).render('error', { message: 'Erreur interne du serveur' });
     }
 };
+
+
 const confirmDeleteRoomController = async (req, res) => {
     try {
         const roomId = req.params.id; 

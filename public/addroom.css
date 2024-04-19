@@ -5,16 +5,19 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-block: 68px;
     background-image: url('img.jpg');
+    margin-left: 387px;
 
 }
 .addroom-title {
-    color: #529ae7; 
+    color: rgba(49, 30, 4, 0.801); 
     font-size: 24px;
     font-family: 'Poppins', sans-serif; 
     font-weight: bold; 
     margin-bottom: 20px; 
     align-items: center;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
+    margin-left: 190px;
+
 
 }
 
@@ -47,12 +50,13 @@
 
 .addroom-button[type="submit"] {
     padding: 10px 20px;
-    background-color: #007bff;
     color: #131010;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: antiquewhite;
+    margin-left: 190px;
+
 }
 
 .addroom-button[type="submit"]:hover {

@@ -3,7 +3,6 @@
     <meta charset="UTF-8" />
     <title>Liste des utilisateurs</title>
     <link rel="stylesheet" href="/static/dash.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
   </head>
 <body>
     <div class="container">
@@ -20,7 +19,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Boucle sur les utilisateurs pour afficher leurs détails -->
                         <% users.forEach(user => { %>
                             <tr>
                                 <td><%= user.username %></td>

@@ -1,6 +1,6 @@
+const nodemailer = require('nodemailer'); // Importez le module nodemailer
+
 const Reservation = require('../models/reservation');
-
-
 
 const editReservationController = async (req, res) => {
     try {
@@ -21,26 +21,58 @@ const editReservationController = async (req, res) => {
 
 const updateReservationController = async (req, res) => {
     try {
+        // Récupérer les données de la réservation depuis le corps de la requête
         const reservationId = req.params.id;
         const { startTime, endTime } = req.body;
-        
-      
 
-        const updatedReservation= await Reservation.findByIdAndUpdate(reservationId, {startTime,  endTime }, { new: true });
+        // Mettre à jour la réservation dans la base de données
+        const updatedReservation = await Reservation.findByIdAndUpdate(reservationId, { startTime, endTime }, { new: true });
 
         if (!updatedReservation) {
             return res.status(404).render('error', { message: 'Reservation not found' });
         }
 
+        // Envoi d'un e-mail de confirmation
+        sendConfirmationEmail(updatedReservation);
+
+        // Rediriger l'utilisateur vers la liste des réservations
         res.redirect('/getreservations/get-all-reservation');
     } catch (error) {
         console.error('Erreur lors de la mise à jour de la salle :', error);
         res.status(500).render('error', { message: 'Erreur interne du serveur' });
     }
 };
-module.exports = {
-    
-    editReservationController   ,
-    updateReservationController
 
+// Fonction pour envoyer un e-mail de confirmation
+const sendConfirmationEmail = (reservation) => {
+    // Configuration du transporteur SMTP pour Nodemailer (utilisez votre propre compte Gmail)
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'oumaimaguedri66@gmail.com',
+            pass: 'uodg lyfg dnkc gacf'
+        }
+    });
+
+    // Définition du contenu de l'e-mail
+    const mailOptions = {
+        from: 'oumaimaguedri66@gmail.com',
+        to: 'oumaimaguedri66@gmail.com', // Adresse e-mail du destinataire
+        subject: 'Modification de réservation confirmée',
+        text: `Votre réservation a été modifiée avec succès. Nouvelle heure de début : ${reservation.startTime}, Nouvelle heure de fin : ${reservation.endTime}`
+    };
+
+    // Envoi de l'e-mail
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Erreur lors de l\'envoi de l\'e-mail :', error);
+        } else {
+            console.log('E-mail de confirmation envoyé :', info.response);
+        }
+    });
+};
+
+module.exports = {
+    editReservationController,
+    updateReservationController
 };

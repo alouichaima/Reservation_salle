@@ -1,5 +1,5 @@
 const Reservation = require('../models/reservation');
-const nodemailer = require('nodemailer'); // Importez le module nodemailer
+const nodemailer = require('nodemailer'); 
 
 const confirmDeleteReservationController = async (req, res) => {
     try {
@@ -25,7 +25,6 @@ const deleteReservationController = async (req, res) => {
             return res.status(404).render('error', { message: 'Reservation not found' });
         }
 
-        // Envoyer un email de confirmation d'annulation
         await sendCancellationConfirmationEmail(deletedReservation.email);
 
         res.redirect('/getreservations/get-all-reservation');
@@ -36,16 +35,14 @@ const deleteReservationController = async (req, res) => {
 
 const sendCancellationConfirmationEmail = async (reservationEmail) => {
     try {
-        // Créer un objet transporteur en utilisant le transport SMTP
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'oumaimaguedri66@gmail.com', // Votre adresse email
-                pass: 'uodg lyfg dnkc gacf' // Votre mot de passe
+                user: 'oumaimaguedri66@gmail.com', 
+                pass: 'uodg lyfg dnkc gacf' 
             }
         });
 
-        // Options de l'email de confirmation d'annulation
         let mailOptions = {
             from: 'oumaimaguedri66@gmail.com',
         to: 'oumaimaguedri66@gmail.com', //

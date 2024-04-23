@@ -68,3 +68,17 @@
     background-color: #848e99;
     background-color: antiquewhite;
   }
+  .editroom-button[type="button"] {
+    padding: 10px 20px;
+    color: #131010;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: antiquewhite;
+    margin-left: 30px;
+  }
+  
+  .editroom-button[type="button"]:hover {
+    background-color: #848e99;
+    background-color: antiquewhite;
+  }

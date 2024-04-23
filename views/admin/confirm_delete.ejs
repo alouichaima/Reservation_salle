@@ -5,7 +5,6 @@
   <title>Confirmer la suppression d'une salle</title>
   <link rel="stylesheet" href="/static/dash.css">
   <link rel="stylesheet" href="/static/confirm_delete.css" />
-
 </head>
 <body>
   <div class="container">
@@ -19,6 +18,7 @@
             <p>Voulez-vous vraiment supprimer la salle <span class="room-name"><%= room.name %></span> ?</p>
             <form class="confirmation-form" action="/api/rooms/<%= room._id %>/delete" method="POST">
                 <button type="submit">Supprimer</button>
+                <button type="button" onclick="window.history.back();">Annuler</button> 
             </form>
         </div>
     </section>

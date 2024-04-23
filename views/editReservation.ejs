@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/editreservation.css" />
+
   <title>Edit Reservation</title>
 <body>
   <div >
     <%- include('header') -%>
 
-    <section >
+    <section style="margin-left: 15cm; margin-top: 5cm;" class="reservation" >
       <div >
-        <h1>Edit Reservation</h1>
+        <h1 >Edit Reservation</h1>
       </div>
       <div >
         <form action="/editreservations/<%= reservation._id %>/edit" method="POST">
@@ -25,7 +27,7 @@
             </div>
            
            
-            <button type="submit" >Update Reservation</button> 
+            <button class="btn" style="background-color: rgb(187, 154, 101); " type="submit" >Update Reservation</button> 
         </form>
         
       </div>

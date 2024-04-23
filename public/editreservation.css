@@ -1,0 +1,15 @@
+.reservation {
+   
+    /* background-image: url('img.jpg'); */
+    color: black; 
+    border-radius: 50px; 
+    text-align: center; 
+    margin: 20px auto; 
+    max-width: 400px;
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+
+  }
+
+
